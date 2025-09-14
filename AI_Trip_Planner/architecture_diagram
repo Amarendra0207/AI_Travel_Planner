@@ -1,0 +1,61 @@
+// AI Trip Planner Architecture
+digraph {
+	rankdir=TB
+	subgraph cluster_0 {
+		label="Frontend Layer"
+		A [label="Streamlit Web UI
+streamlit_app.py"]
+		B [label="FastAPI Backend
+main.py"]
+		A -> B [label="HTTP Requests"]
+	}
+	subgraph cluster_1 {
+		label="Core Components"
+		C [label="Graph Builder
+agentic_workflow.py"]
+		E [label="LangChain Agent"]
+		F [label="Model Loader
+model_loaders.py"]
+		G [label="System Prompts
+prompt.py"]
+		E -> F [label=Loads]
+		E -> G [label=Uses]
+	}
+	subgraph cluster_2 {
+		label="Tools Layer"
+		T1 [label="Weather Info Tool"]
+		T2 [label="Place Search Tool"]
+		T3 [label="Expense Calculator Tool"]
+		T4 [label="Currency Conversion Tool"]
+		T5 [label="Distance Calculator Tool"]
+		T6 [label="Arithmetic Operations Tool"]
+	}
+	subgraph cluster_3 {
+		label="External Services"
+		S1 [label="OpenWeatherMap API"]
+		S2 [label="Tavily Search API"]
+		S3 [label="Exchange Rate API"]
+		S4 [label="OpenRouteService API"]
+	}
+	subgraph cluster_4 {
+		label=Utilities
+		U1 [label="Weather Info"]
+		U2 [label="Place Info Search"]
+		U3 [label="Expense Calculator"]
+		U4 [label="Currency Converter"]
+		U5 [label="Distance Calculator"]
+		U6 [label="Config Loaders"]
+		U7 [label="Word Document Exporter"]
+	}
+	B -> C [label=Invokes]
+	C -> E [label=Uses]
+	T1 -> S1 [label="API Calls"]
+	T2 -> S2 [label="API Calls"]
+	T4 -> S3 [label="API Calls"]
+	T5 -> S4 [label="API Calls"]
+	T1 -> U1 [label=Uses]
+	T2 -> U2 [label=Uses]
+	T3 -> U3 [label=Uses]
+	T4 -> U4 [label=Uses]
+	T5 -> U5 [label=Uses]
+}
