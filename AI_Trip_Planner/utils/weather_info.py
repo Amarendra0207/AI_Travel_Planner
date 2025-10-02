@@ -1,9 +1,10 @@
 import requests
+import streamlit as st
 
 class WeatherForecastTool:
-    def __init__(self, api_key:str):
-        self.api_key = api_key
-        self.base_url = "https://api.openweathermap.org/data/2.5"
+    def __init__(self):
+        self.api_key = st.secrets["weather"]["api_key"]
+        self.base_url = st.secrets["weather"]["base_url"]
 
     def get_current_weather(self, place:str):
         """Get current weather of a place"""

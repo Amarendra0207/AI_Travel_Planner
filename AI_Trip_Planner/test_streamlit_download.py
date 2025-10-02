@@ -2,20 +2,15 @@ import streamlit as st
 import requests
 import datetime
 import os
-from dotenv import load_dotenv
 
 # Simple test for Word document download
 st.title("🧪 Word Download Test")
 
-# Load environment variables
-load_dotenv()
-
-# Get environment variables and set BASE_URL accordingly
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
-if ENVIRONMENT == 'production':
-    BASE_URL = os.getenv('PROD_URL')
+# Get BASE_URL from Streamlit secrets
+if st.secrets["urls"]["environment"] == "production":
+    BASE_URL = st.secrets["urls"]["production"]
 else:
-    BASE_URL = os.getenv('LOCAL_URL')
+    BASE_URL = st.secrets["urls"]["local"]
 
 # Test content
 test_content = """

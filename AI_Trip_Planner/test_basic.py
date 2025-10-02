@@ -35,11 +35,12 @@ def test_basic_functionality():
     
     # Test 2: Check MAP_KEY
     print(f"\n2️⃣ MAP_KEY Status:")
-    map_key = os.getenv("MAP_KEY")
+    import streamlit as st
+    map_key = st.secrets["map"]["api_key"]
     if map_key:
         print(f"✅ MAP_KEY found: {map_key[:10]}...{map_key[-10:]}")
     else:
-        print("❌ MAP_KEY not found in environment variables")
+        print("❌ MAP_KEY not found in secrets")
     
     # Test 3: Test one simple geocoding call
     print(f"\n3️⃣ Testing Simple Geocoding (with timeout):")

@@ -1,0 +1,25 @@
+# Python cache files
+**/__pycache__/
+*.py[cod]
+
+# Streamlit secrets
+AI_Trip_Planner/.streamlit/secrets.toml
+
+# Environment files
+.env
+.venv/
+venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Build and distribution
+*.egg-info/
+dist/
+build/
+
+# Local development
+*.log
+.DS_Store

@@ -6,20 +6,16 @@ Test script to verify budget preference integration
 import requests
 import json
 import os
-from dotenv import load_dotenv
+import streamlit as st
 
 def test_budget_integration():
     """Test budget preference integration with FastAPI backend"""
 
-    # Load environment variables
-    load_dotenv()
-    
-    # Get environment variables and set BASE_URL accordingly
-    ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
-    if ENVIRONMENT == 'production':
-        BASE_URL = os.getenv('PROD_URL')
+    # Get environment-based URL from Streamlit secrets
+    if st.secrets["urls"]["environment"] == "production":
+        BASE_URL = st.secrets["urls"]["production"]
     else:
-        BASE_URL = os.getenv('LOCAL_URL')
+        BASE_URL = st.secrets["urls"]["local"]
 
     # Test data for different budget preferences
     test_cases = [

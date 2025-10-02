@@ -2,17 +2,12 @@ import streamlit as st
 import requests
 import datetime
 import os
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
-
-# Get environment variables and set BASE_URL accordingly
-ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
-if ENVIRONMENT == 'production':
-    BASE_URL = os.getenv('PROD_URL')
+# Get BASE_URL from Streamlit secrets
+if st.secrets["urls"]["environment"] == "production":
+    BASE_URL = st.secrets["urls"]["production"]
 else:
-    BASE_URL = os.getenv('LOCAL_URL')
+    BASE_URL = st.secrets["urls"]["local"]
 
 st.title("🌍 Travel Planner - Fixed Download")
 

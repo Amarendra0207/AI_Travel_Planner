@@ -1,17 +1,14 @@
 
 import requests
-import os
-from dotenv import load_dotenv
-load_dotenv()
+import streamlit as st
 
 class CarRentalService:
     def __init__(self):
-        self.amadeus_api_key = os.getenv("AMADEUS_API_KEY", "")
-        self.amadeus_api_secret = os.getenv("AMADEUS_API_SECRET", "")
-        print(f"AMADEUS_API_KEY: '{self.amadeus_api_key}'")
-        print(f"AMADEUS_API_SECRET: '{self.amadeus_api_secret}'")
-        self.base_url = "https://test.api.amadeus.com/v1/shopping/transfer-offers"
-        self.token_url = "https://test.api.amadeus.com/v1/security/oauth2/token"
+        # Get Amadeus configuration from Streamlit secrets
+        self.amadeus_api_key = st.secrets["amadeus"]["api_key"]
+        self.amadeus_api_secret = st.secrets["amadeus"]["api_secret"]
+        self.base_url = st.secrets["amadeus"]["base_url"] + "/shopping/transfer-offers"
+        self.token_url = st.secrets["amadeus"]["token_url"]
         self.access_token = self._get_access_token()
         print(f"Access Token: '{self.access_token}'")
 
