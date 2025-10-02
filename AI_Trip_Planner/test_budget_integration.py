@@ -13,7 +13,13 @@ def test_budget_integration():
 
     # Load environment variables
     load_dotenv()
-    BASE_URL = os.getenv('BASE_URL')  # Get BASE_URL from .env file
+    
+    # Get environment variables and set BASE_URL accordingly
+    ENVIRONMENT = os.getenv('ENVIRONMENT', 'development')
+    if ENVIRONMENT == 'production':
+        BASE_URL = os.getenv('PROD_URL')
+    else:
+        BASE_URL = os.getenv('LOCAL_URL')
 
     # Test data for different budget preferences
     test_cases = [
