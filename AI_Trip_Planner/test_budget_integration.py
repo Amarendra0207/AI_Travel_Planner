@@ -8,9 +8,9 @@ import json
 
 def test_budget_integration():
     """Test budget preference integration with FastAPI backend"""
-    
-    base_url = "http://localhost:8000"
-    
+
+    BASE_URL = "http://localhost:8000"
+
     # Test data for different budget preferences
     test_cases = [
         {
@@ -46,7 +46,7 @@ def test_budget_integration():
         
         try:
             # Send request to FastAPI backend
-            response = requests.post(f"{base_url}/query", json=test_case['payload'])
+            response = requests.post(f"{BASE_URL}/query", json=test_case['payload'])
             
             if response.status_code == 200:
                 result = response.json()
