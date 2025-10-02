@@ -1,14 +1,13 @@
 import os
 from typing import List
 from langchain.tools import tool
-from dotenv import load_dotenv
 import requests
 from airportsdata import load as load_airports
+import streamlit as st
 
 class DistanceCalculatorTool:
     def __init__(self):
-        load_dotenv()
-        self.openroute_api_key = os.environ.get("MAP_KEY")
+        self.openroute_api_key = st.secrets["map"]["key"]
         self.airports_data = load_airports('IATA')
         self.distance_tool_list = self._setup_tools()
 

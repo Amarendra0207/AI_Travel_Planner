@@ -2,14 +2,13 @@ import os
 import requests
 from airportsdata import load as load_airports
 from typing import Tuple, Optional, Dict, List
-from dotenv import load_dotenv
+import streamlit as st
 
 class AirportDistanceCalculator:
     """Utility class for calculating distances from airports to various locations"""
     
     def __init__(self):
-        load_dotenv()
-        self.openroute_api_key = os.environ.get("MAP_KEY")
+        self.openroute_api_key = st.secrets["map"]["key"]
         self.airports_data = load_airports('IATA')
     
     def get_airport_coordinates(self, airport_code: str) -> Optional[Tuple[float, float]]:

@@ -8,16 +8,13 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from utils.airport_distance_calculator import AirportDistanceCalculator
-from dotenv import load_dotenv
+import streamlit as st
 
 def test_one_distance():
     """Test one simple distance calculation"""
     
     print("🧪 Testing One Distance Calculation")
     print("=" * 50)
-    
-    # Load environment variables
-    load_dotenv()
     
     # Initialize calculator
     calc = AirportDistanceCalculator()

@@ -2,12 +2,11 @@ import os
 from utils.currency_convertor import CurrencyConverter
 from typing import List
 from langchain.tools import tool
-from dotenv import load_dotenv
+import streamlit as st
 
 class CurrencyConverterTool:
     def __init__(self):
-        load_dotenv()
-        self.api_key = os.environ.get("EXCHANGE_RATE_API_KEY")
+        self.api_key = st.secrets["exchange_rate"]["api_key"]
         self.currency_service = CurrencyConverter(self.api_key)
         self.currency_converter_tool_list = self._setup_tools()
 

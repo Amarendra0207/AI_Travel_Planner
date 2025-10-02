@@ -7,8 +7,7 @@ from agent.agentic_workflow import GraphBuilder
 from fastapi.responses import JSONResponse
 from utils.model_loaders import ModelLoader
 import utils.model_loaders
-from dotenv import load_dotenv
-load_dotenv()
+import streamlit as st
 import os
 from utils.car_rental_service import CarRentalService
 from utils.airport_distance_calculator import AirportDistanceCalculator
