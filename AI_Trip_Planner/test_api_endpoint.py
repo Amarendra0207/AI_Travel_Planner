@@ -5,6 +5,8 @@ Test the Word export API endpoint directly
 
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 def test_word_export_api():
     """Test the Word export API endpoint"""
@@ -12,7 +14,9 @@ def test_word_export_api():
     print("🧪 Testing Word Export API Endpoint")
     print("=" * 50)
     
-    BASE_URL = "http://localhost:8000"
+    # Load environment variables
+    load_dotenv()
+    BASE_URL = os.getenv('BASE_URL')  # Get BASE_URL from .env file
     
     # Test content
     test_content = """

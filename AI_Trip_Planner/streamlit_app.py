@@ -2,11 +2,16 @@ import streamlit as st
 import requests
 import datetime
 import os
+from dotenv import load_dotenv
 
 # from exception.exceptions import TradingBotException
 import sys
 
-BASE_URL = "http://localhost:8000"  # Backend endpoint
+# Load environment variables
+load_dotenv()
+BASE_URL = os.getenv('BASE_URL')  # Get BASE_URL from .env file
+
+# Configure page settings
 
 st.set_page_config(
     page_title="🌍 Travel Planner Agentic Application",

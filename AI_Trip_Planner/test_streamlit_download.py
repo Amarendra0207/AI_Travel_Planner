@@ -2,11 +2,14 @@ import streamlit as st
 import requests
 import datetime
 import os
+from dotenv import load_dotenv
 
 # Simple test for Word document download
 st.title("🧪 Word Download Test")
 
-BASE_URL = "http://localhost:8000"
+# Load environment variables
+load_dotenv()
+BASE_URL = os.getenv('BASE_URL')  # Get BASE_URL from .env file
 
 # Test content
 test_content = """

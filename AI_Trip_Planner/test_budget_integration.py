@@ -5,11 +5,15 @@ Test script to verify budget preference integration
 
 import requests
 import json
+import os
+from dotenv import load_dotenv
 
 def test_budget_integration():
     """Test budget preference integration with FastAPI backend"""
 
-    BASE_URL = "http://localhost:8000"
+    # Load environment variables
+    load_dotenv()
+    BASE_URL = os.getenv('BASE_URL')  # Get BASE_URL from .env file
 
     # Test data for different budget preferences
     test_cases = [
