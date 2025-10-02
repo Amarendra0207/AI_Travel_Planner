@@ -34,7 +34,8 @@ def add(a: int, b: int) -> int:
 
 @tool
 def currency_converter(from_curr: str, to_curr: str, value: float)->float:
-    os.environ["ALPHAVANTAGE_API_KEY"] = os.getenv('ALPHAVANTAGE_API_KEY')
+    import streamlit as st
+    os.environ["ALPHAVANTAGE_API_KEY"] = st.secrets["exchange_rate"]["alpha_vantage_key"]
     alpha_vantage = AlphaVantageAPIWrapper()
     response = alpha_vantage._get_exchange_rate(from_curr, to_curr)
     exchange_rate = response['Realtime Currency Exchange Rate']['5. Exchange Rate']

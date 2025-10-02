@@ -6,9 +6,8 @@ Debug API responses
 import sys
 import os
 import requests
+import streamlit as st
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from dotenv import load_dotenv
 
 def debug_api():
     """Debug API responses"""
@@ -16,9 +15,8 @@ def debug_api():
     print("🔍 Debugging API Responses")
     print("=" * 50)
     
-    # Load environment variables
-    load_dotenv()
-    map_key = os.getenv("MAP_KEY")
+    # Get map key from Streamlit secrets
+    map_key = st.secrets["map"]["api_key"]
     
     # Test geocoding with more specific address
     print("\n1️⃣ Testing Geocoding API...")
